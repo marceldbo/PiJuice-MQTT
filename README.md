@@ -100,7 +100,3 @@ Jun 06 09:03:24 homepi systemd[1]: Started PiJuice to MQTT.
 The background service is now running and will continue to publish to MQTT every 30 seconds. The script will restart if it crashes, and after Pi restart. 
 
 You can stop the script by `sudo systemctl stop pijuicemqtt.service`
-
-## Other resources
-
-- [Publish Eskom loadshedding stage and schedule to MQTT using Node-RED](https://github.com/dalehumby/Eskom-Loadshedding-NodeRED)
