@@ -1,10 +1,9 @@
 # PiJuice MQTT
- Publish PiJuice UPS information to MQTT for consumption by, for example, Node-RED and Home Assistant
+The goal is to publish PiJuice UPS information to MQTT for consumption by, for example, Node-RED, Home Assistant, Domoticz, etc. The original idea and work is from https://github.com/dalehumby/PiJuice-MQTT. I modified the code to comply with the new version 2 of paho-mqtt.
 
-The [PiJuice UPS hats by PiSupply](https://uk.pi-supply.com/products/pijuice-standard) make very nice battery backups for Raspberry Pi's. I use mine so that Home Assistant (HA) continues to run during [Loadshedding in South Africa](https://en.wikipedia.org/wiki/South_African_energy_crisis), and to correctly shut down the Pi when the battery runs low.
+The [PiJuice UPS hats by PiSupply](https://uk.pi-supply.com/products/pijuice-standard) make very nice battery backups for Raspberry Pi's. I use mine so that Domoticz continues to run during a power-outage and to correctly shut down the Pi when the battery runs low.
 
-Existing [Node-RED](https://flows.nodered.org/node/node-red-contrib-pisupply-pijuice-pis0212) and HA integrations assume Node-RED and HA are running on the same Pi that has the PiJuice. This doesn't work when running in Docker Swarm mode (as I do). I wanted a service that runs on each Pi and publishes PiJuice stats to MQTT. From there I can monitor battery level, and start automations when the Pi loses or regains wall power.
-
+To get the data into separate devices in the Domoticz dashboard, I use a Node-RED flow that runs on the same Pi that has the PiJuice. 
 
 ## Installation
 
@@ -13,7 +12,7 @@ This installation assumes that you already have the [`pijuice_cli`](https://gith
 
 ### Clone this repo
 
-1. Either clone or download this repo into a folder on your Pi `git clone git@github.com:dalehumby/PiJuice-MQTT.git`
+1. Either clone or download this repo into a folder on your Pi `git clone git@github.com:marceldbo/PiJuice-MQTT.git`
 2. Open the folder `cd PiJuice-MQTT`
 3. Rename the config file `mv config.yaml.example config.yaml`
 4. Open the `config.yaml` file and change the MQTT broker IP/hostname and the broker username/password. If no username/password is required to use your broker then delete the `username` and `password` lines
